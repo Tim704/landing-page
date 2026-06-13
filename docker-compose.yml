@@ -1,0 +1,16 @@
+# Landing page — cloudflared routes landing.timhufnagel.org → 127.0.0.1:3004.
+services:
+  landing:
+    build: .
+    image: landing-page:latest
+    container_name: landing-page
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3004:3004"
+    mem_limit: 96m
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:3004/',r=>process.exit(r.statusCode<500?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
