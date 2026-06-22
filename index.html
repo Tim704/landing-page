@@ -57,25 +57,29 @@
     --muted3: #A89C8E;
 
     --accent: #E9A23B;  /* gold — the one saturated fill (hero badge, dots) */
-    --gold:   #B08442;  /* gold ink — kickers + action labels (ports) */
+    --gold:   #8A6326;  /* gold INK for text (kickers + ports) — darkened to clear AA 4.5:1 on paper (~5:1) */
 
-    --track:  #EADFCE;
     --goodbg: #DCF0EA;  /* mint tint behind an "online" pill */
 
     --hair:  rgba(43,36,32,.12);  /* divider lines only — never a box edge */
     --hair2: rgba(43,36,32,.25);
 
     --shadow: rgba(43,36,32,.9);  /* hard offset shadow ink */
-    --focus:  rgba(233,162,59,.9);
+    --focus:  rgba(43,36,32,.9);  /* ink focus ring — ~14:1 on paper (gold focus failed the 3:1 SC 1.4.11 minimum here) */
 
     --grad1: rgba(233,162,59,.18);  /* gold glow, top-right */
     --grad2: rgba(42,157,143,.16);  /* teal glow, bottom-left */
 
     --up:   #2E9E5B;  /* forest — online led */
     --down: #E8654F;  /* coral — offline led */
-    --id-1: #2A9D8F;  /* teal   — Notes row numeral */
-    --id-2: #2D65A4;  /* blue   — World Cup row numeral */
-    --id-3: #6C5CE7;  /* violet — Florence row numeral */
+    --id-1: #2A9D8F;  /* teal      — Notes row numeral */
+    --id-2: #2D65A4;  /* blue      — World Cup row numeral */
+    --id-3: #6C5CE7;  /* violet    — Florence row numeral */
+    --id-4: #C26A3D;  /* terracotta — Alpine */
+    --id-5: #B5485D;  /* garnet    — CrisisLens */
+    --id-6: #5E8C3A;  /* olive     — Hoard */
+    --id-7: #A8772C;  /* ochre     — Todo */
+    --id-8: #3F7C8C;  /* slate teal — Eisenhower */
     color-scheme: light;
   }
 
@@ -93,7 +97,6 @@
     --accent: #E9A23B;  /* gold fill stays constant across themes */
     --gold:   #D9B271;
 
-    --track:  #3A3329;
     --goodbg: #1E3A33;
 
     --hair:  rgba(241,231,214,.14);
@@ -110,6 +113,11 @@
     --id-1: #4FBEAE;
     --id-2: #6498D9;
     --id-3: #9D8CFF;
+    --id-4: #E08A5B;
+    --id-5: #D96A7E;
+    --id-6: #82B45C;
+    --id-7: #CFA050;
+    --id-8: #6FA6B8;
     color-scheme: dark;
   }
 
@@ -122,7 +130,6 @@
       radial-gradient(1200px 600px at 80% -10%, var(--grad1), transparent 60%),
       radial-gradient(900px 500px at -10% 110%, var(--grad2), transparent 60%),
       var(--bg);
-    background-attachment: fixed;
     color: var(--ink);
     font-family: "Hanken Grotesk", sans-serif;
     font-weight: 400;
@@ -385,7 +392,7 @@
     text-decoration: none;
     color: inherit;
     padding: 1.15rem 0.65rem;
-    border-bottom: 1.5px solid var(--hair2);
+    border-bottom: 1px solid var(--hair);   /* lighter inter-row rule; the heavier --hair2 stays on the list/footer boundaries */
     border-radius: 14px;
     counter-increment: svc;
   }
@@ -415,6 +422,11 @@
   .svc:nth-child(1) .svc-name::before { color: var(--id-1); }
   .svc:nth-child(2) .svc-name::before { color: var(--id-2); }
   .svc:nth-child(3) .svc-name::before { color: var(--id-3); }
+  .svc:nth-child(4) .svc-name::before { color: var(--id-4); }
+  .svc:nth-child(5) .svc-name::before { color: var(--id-5); }
+  .svc:nth-child(6) .svc-name::before { color: var(--id-6); }
+  .svc:nth-child(7) .svc-name::before { color: var(--id-7); }
+  .svc:nth-child(8) .svc-name::before { color: var(--id-8); }
   .svc:hover .svc-name::before { opacity: 1; }
   .svc-host {
     margin-top: 0.2rem;
@@ -593,9 +605,14 @@
      Each renders as a quiet, typeset list row linking to its host.
      ============================================================ */
   const services = [
-    { name: "Notes",     host: "notes.timhufnagel.org",    port: 3002 },
-    { name: "World Cup", host: "worldcup.timhufnagel.org", port: 3003 },
-    { name: "Florence",  host: "florence.timhufnagel.org", port: 8080 },
+    { name: "Notes",      host: "notes.timhufnagel.org",      port: 3002 },
+    { name: "World Cup",  host: "worldcup.timhufnagel.org",   port: 8081 },
+    { name: "Florence",   host: "florence.timhufnagel.org",   port: 8080 },
+    { name: "Alpine",     host: "alpine.timhufnagel.org",     port: 3005 },
+    { name: "CrisisLens", host: "crisislens.timhufnagel.org", port: 3007 },
+    { name: "Hoard",      host: "hoard.timhufnagel.org",      port: 3010 },
+    { name: "Todo",       host: "todo.timhufnagel.org",       port: 3011 },
+    { name: "Eisenhower", host: "eisenhower.timhufnagel.org", port: 3012 },
   ];
 
   const list = document.getElementById("svcList");

@@ -30,8 +30,13 @@ const path = require('path');
 const SERVICES = [
   { name: 'BucketFillers', host: 'bucketfillers.timhufnagel.org', port: 3000 },
   { name: 'Notes',         host: 'notes.timhufnagel.org',         port: 3002 },
-  { name: 'World Cup',     host: 'worldcup.timhufnagel.org',      port: 3003 },
+  { name: 'World Cup',     host: 'worldcup.timhufnagel.org',      port: 8081 },
   { name: 'Florence',      host: 'florence.timhufnagel.org',      port: 8080 },
+  { name: 'Alpine',        host: 'alpine.timhufnagel.org',        port: 3005 },
+  { name: 'CrisisLens',    host: 'crisislens.timhufnagel.org',    port: 3007 },
+  { name: 'Hoard',         host: 'hoard.timhufnagel.org',         port: 3010 },
+  { name: 'Todo',          host: 'todo.timhufnagel.org',          port: 3011 },
+  { name: 'Eisenhower',    host: 'eisenhower.timhufnagel.org',    port: 3012 },
 ];
 
 const PORT              = Number(process.env.PORT || 8787);
