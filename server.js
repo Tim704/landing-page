@@ -37,6 +37,7 @@ const SERVICES = [
   { name: 'Hoard',         host: 'hoard.timhufnagel.org',         port: 3010 },
   { name: 'Todo',          host: 'todo.timhufnagel.org',          port: 3011 },
   { name: 'Eisenhower',    host: 'eisenhower.timhufnagel.org',    port: 3012 },
+  { name: 'Wanderlist',    host: 'wanderlist.timhufnagel.org',    port: 3018, healthPath: '/api/health' },
 ];
 
 const PORT              = Number(process.env.PORT || 8787);
